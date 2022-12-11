@@ -4,6 +4,8 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+nmap <C-s> :update<CR>
+imap <C-s> <Esc>:update<CR>a
 
 " Adding an empty line below, above and below with insert """""""""""""""""""""""""""""""""""""""""
 nmap op o<Esc>k
