@@ -2,6 +2,7 @@
 call plug#begin()
 	Plug 'getomni/neovim'
 	Plug 'sainnhe/sonokai'
+	Plug 'dracula/vim'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 	Plug 'ryanoasis/vim-devicons'
@@ -10,6 +11,8 @@ call plug#begin()
 	Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 	Plug 'Xuyuanp/nerdtree-git-plugin'
 	Plug 'jiangmiao/auto-pairs'
+	Plug 'ap/vim-css-color'
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 
@@ -21,7 +24,7 @@ set relativenumber   " Enable relative numbers
 set tabstop=2        " Show existing tab with 2 spaces width
 set softtabstop=2    " Show existing tab with 2 spaces width
 set shiftwidth=2     " When indenting with '>', use 2 spaces width
-set expandtab        " On pressing tab, insert 4 spaces
+set expandtab        " On pressing tab, insert 2 spaces
 set smarttab         " insert tabs on the start of a line according to shiftwidth
 set smartindent      " Automatically inserts one extra level of indentation in some cases
 set hidden           " Hides the current buffer when a new file is openned
@@ -33,7 +36,7 @@ set colorcolumn=100  " Draws a line at the given line to keep aware of the line 
 set signcolumn=yes   " Add a column on the left. Useful for linting
 set cmdheight=2      " Give more space for displaying messages
 set updatetime=100   " Time in miliseconds to consider the changes
-set encoding=utf-8   " The encoding should be utf-8 to activate the font icons
+set encoding=UTF-8   " The encoding should be utf-8 to activate the font icons
 set nobackup         " No backup files
 set nowritebackup    " No backup files
 set splitright       " Create the vertical splits to the right
@@ -93,9 +96,39 @@ autocmd! CursorHold,CursorHoldI * call HighlightWordUnderCursor()
 
 
 
-" Theme """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-colorscheme omni
 let g:airline_theme = 'sonokai'
+
+" Themes """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+
+let g:sonokai_style = 'andromeda'
+let g:sonokai_enable_italic = 1
+let g:sonokai_disable_italic_comment = 0
+let g:sonokai_diagnostic_line_highlight = 1
+let g:sonokai_current_word = 'bold'
+colorscheme dracula
 " AirLine """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+" Git Plugin """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+	\ 'Modified'  :'*',
+	\ 'Staged'    :'+',
+	\ 'Untracked' :'x',
+	\ 'Renamed'   :'>',
+	\ 'Unmerged'  :'=',
+	\ 'Deleted'   :'-',
+	\ 'Dirty'     :'#',
+	\ 'Ignored'   :'i',
+	\ 'Clean'     :'v',
+	\ 'Unknown'   :'?',
+\ }
+
+
+
+" Sources """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+source $HOME/AppData/Local/nvim/coc.vim
