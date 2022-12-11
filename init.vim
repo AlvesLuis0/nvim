@@ -1,6 +1,5 @@
 " Plugs """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin()
-	Plug 'getomni/neovim'
 	Plug 'sainnhe/sonokai'
 	Plug 'dracula/vim'
 	Plug 'vim-airline/vim-airline'
