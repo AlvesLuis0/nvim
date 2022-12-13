@@ -157,5 +157,5 @@ let g:coc_global_extensions = ['coc-json',
 	\'coc-vimlsp',
 	\'coc-html',
 	\'coc-css',
-  \'coc-clangd'
+	\'coc-clangd'
 \ ]
